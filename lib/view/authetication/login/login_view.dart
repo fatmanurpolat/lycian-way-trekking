@@ -17,8 +17,9 @@ class _LoginViewState extends State<LoginView> {
   @override
   void initState() {
     super.initState();
-    viewModel.checkCurrentUser(context);
-    // viewModel.loc
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      viewModel.checkCurrentUser(context);
+    }); // viewModel.loc
   }
 
   LoginViewModel viewModel = LoginViewModel(); //nesne oluşturduk

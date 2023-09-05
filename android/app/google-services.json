@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "138543873150",
+    "firebase_url": "https://lycian-way-trekking-default-rtdb.firebaseio.com",
+    "project_id": "lycian-way-trekking",
+    "storage_bucket": "lycian-way-trekking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138543873150:android:a66f65fe2e58393f8e6c2f",
+        "android_client_info": {
+          "package_name": "com.example.lycian_way_trekking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138543873150-fuu9lbl60qgj6psjskknakqcgjfkq53b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADeF-4JXq6AcnMMZHvznUPSrzdS5KjGyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138543873150-fuu9lbl60qgj6psjskknakqcgjfkq53b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "138543873150-9c74buua2btptq22q15dtv3gkr4sjvj7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.lycianWayTrekking.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138543873150:android:b538b5e50e87b9fb8e6c2f",
+        "android_client_info": {
+          "package_name": "com.example.restart_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138543873150-fuu9lbl60qgj6psjskknakqcgjfkq53b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADeF-4JXq6AcnMMZHvznUPSrzdS5KjGyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138543873150-fuu9lbl60qgj6psjskknakqcgjfkq53b.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "138543873150-9c74buua2btptq22q15dtv3gkr4sjvj7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.lycianWayTrekking.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -57,6 +57,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  cloud_firestore:
+    dependency: "direct main"
+    description:
+      name: cloud_firestore
+      sha256: "0ff0baec167e308df192398dbd81ec13c1799635885c6aa6ed9ab8b5ed61f52c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.9.1"
+  cloud_firestore_platform_interface:
+    dependency: transitive
+    description:
+      name: cloud_firestore_platform_interface
+      sha256: "5749b81aea93afdce220e02d34369162010d210011054ac494b2c38c4e9ebeb7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.16.0"
+  cloud_firestore_web:
+    dependency: transitive
+    description:
+      name: cloud_firestore_web
+      sha256: fef99ad0599e983092adb1bb01f14a596dba601a7a8efaaffd7b2721d64e2c51
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.7.0"
   collection:
     dependency: transitive
     description:
@@ -640,6 +664,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
+  pushwoosh_flutter:
+    dependency: transitive
+    description:
+      name: pushwoosh_flutter
+      sha256: "9cda34897348b7991a33f829479c5cf3fa9626b467839e868a1510931bb9473a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.14"
+  pushwoosh_geozones:
+    dependency: "direct main"
+    description:
+      name: pushwoosh_geozones
+      sha256: "20d8340c8c490ce4a581536b4b766f6769b2aeb58723e75b2f13cb9d60b6c3db"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.14"
   riverpod:
     dependency: "direct main"
     description:

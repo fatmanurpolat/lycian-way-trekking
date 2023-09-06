@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,12 +23,68 @@ class _MapsViewState extends ConsumerState<MapsView> {
   LatLng? userLocation;
   bool isLoading = true;
   final MapsViewModel viewModel = MapsViewModel();
+  final MapController mapController = MapController();
+  Stream<Position>? positionStream;
+
+  //harita kontrolcüsü
+
+  final List<Marker> markers = [];
 
   @override
   void initState() {
     super.initState();
     // İzin kontrolü yapılıyor
     checkLocationPermission();
+    loadMarkersFromFirestore();
+    startLocationTracking();
+  }
+
+  final LocationSettings locationSettings = const LocationSettings(
+    accuracy: LocationAccuracy.high,
+    distanceFilter: 0,
+  );
+  void startLocationTracking() {
+    positionStream = Geolocator.getPositionStream(
+      locationSettings: locationSettings,
+      // Konum güncellemesi arasındaki minimum mesafe (metre cinsinden)
+    );
+    positionStream!.listen((Position position) {
+      setState(() {
+        userLocation = LatLng(position.latitude, position.longitude);
+      });
+    });
+  }
+
+  Future<void> loadMarkersFromFirestore() async {
+    final QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('allRoutes').get();
+
+    for (final DocumentSnapshot doc in snapshot.docs) {
+      final GeoPoint? point = doc['point'] as GeoPoint?;
+
+      if (point != null) {
+        final double latitude = point.latitude;
+        final double longitude = point.longitude;
+
+        final Marker marker = Marker(
+          width: 10.0,
+          height: 10.0,
+          point: LatLng(latitude, longitude),
+          builder: (ctx) => const Icon(
+            Icons.location_on,
+            color: Colors.blue, // Customize the marker color here
+          ),
+        );
+
+        setState(() {
+          markers.add(marker);
+          mapController.move(userLocation!, 15.0);
+        });
+      }
+    }
+    if (userLocation != null) {
+      mapController.move(userLocation!, 15.0);
+    }
   }
 
   // İzin kontrolü ve konum alımı
@@ -53,48 +110,30 @@ class _MapsViewState extends ConsumerState<MapsView> {
       body: SafeArea(
         child: Center(
           child: isLoading
-              ? CircularProgressIndicator()
+              ? const CircularProgressIndicator()
               : userLocation != null
                   ? FlutterMap(
+                      mapController: mapController,
                       options: MapOptions(
                         center: userLocation,
                         zoom: 15.0, // Harita yakınlaştırma seviyesi
                       ),
-                      nonRotatedChildren: [
-                        MarkerLayer(
-                          markers: [
-                            Marker(
-                              rotate: true,
-                              rotateOrigin: const Offset(0.1, 0.1),
-                              width: 30.0,
-                              height: 30.0,
-                              point: userLocation!,
-                              builder: (ctx) => Container(
-                                child: Icon(
-                                  Icons.location_on,
-                                  size: 40.0,
-                                  color: Color.fromARGB(255, 254, 2, 2),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        RichAttributionWidget(
-                          attributions: [
-                            TextSourceAttribution(
-                              'OpenStreetMap contributors',
-                              onTap: () => launchUrl(Uri.parse(
-                                  'https://openstreetmap.org/copyright')),
-                            ),
-                          ],
-                        ),
-                      ],
                       children: [
                         TileLayer(
                           urlTemplate:
                               'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                           userAgentPackageName: 'com.example.app',
                         ),
+                        MarkerLayer(markers: [
+                          ...markers,
+                          Marker(
+                            point: userLocation!,
+                            builder: (ctx) => const Icon(
+                              Icons.location_on,
+                              color: Color.fromARGB(255, 254, 2, 2),
+                            ),
+                          ),
+                        ]),
                       ],
                     )
                   : Text('Konum bilgisi alınamadı.'),

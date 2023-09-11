@@ -56,6 +56,11 @@ dependencies:
   fluttertoast: ^8.2.2
   marker_icon: ^0.7.1
   material_dialogs: ^1.1.4
+  cloud_firestore: ^4.9.1
+  pushwoosh_geozones: ^2.2.14
+  permission_handler: ^10.4.5
+  image_picker: ^1.0.4
+  firebase_storage: ^11.2.6
 
 dev_dependencies:
   flutter_test:

@@ -4,7 +4,7 @@ import 'package:restart_project/view/authetication/register/register_view.dart';
 import 'package:restart_project/view/home/home_view.dart';
 
 class LoginViewModel {
-  TextEditingController userNameTextController = TextEditingController();
+  TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
 
   Future<void> checkCurrentUser(context) async {
@@ -18,13 +18,13 @@ class LoginViewModel {
   }
 
   Future<void> login(BuildContext context) async {
-    String username = userNameTextController.text.trim();
+    String email = emailTextController.text.trim();
     String password = passwordTextController.text.trim();
 
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: username,
+        email: email,
         password: password,
       );
 

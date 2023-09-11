@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:restart_project/core/utils/app_config.dart';
+import 'package:restart_project/view/dashboard/dashboard_selection_route.dart';
 import 'package:restart_project/view/dashboard/dashboard_view.dart';
+import 'package:restart_project/view/dashboard/dashboard_view_detail_route.dart';
 import 'package:restart_project/view/maps/maps_view.dart';
 import 'package:restart_project/view/profile/profile_view.dart';
+import 'package:restart_project/view/route/routes_selection_view.dart.dart';
 import 'package:restart_project/view/route/routes_view.dart';
 
 class BottomNavigationWidget extends StatelessWidget {
@@ -29,8 +32,8 @@ class _BottomNavigationBarExampleState
     extends State<BottomNavigationBarExample> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
-    DashboardView(),
-    const RoutesView(),
+    DashboardMainView(),
+    DashboardSelectionView(),
     MapsView(),
     ProfileView()
   ];
@@ -72,7 +75,7 @@ class _BottomNavigationBarExampleState
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: CustomColors.ORANGE_MEDIUM,
+        // selectedItemColor: CustomColors.ORANGE_MEDIUM,
         onTap: _onItemTapped,
       ),
     );

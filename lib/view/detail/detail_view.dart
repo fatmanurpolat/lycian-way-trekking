@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DetailsView extends StatelessWidget {
   final String pageTitle;
 
-  DetailsView(this.pageTitle);
+  DetailsView(this.pageTitle, {required Map<String, dynamic> routeData});
 
   @override
   Widget build(BuildContext context) {

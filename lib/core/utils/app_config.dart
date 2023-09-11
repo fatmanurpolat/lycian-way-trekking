@@ -8,10 +8,11 @@ class AppConfig {
 class CustomColors {
   static Color DARK_GREEN = Color.fromARGB(255, 0, 94, 33);
   static Color MEDIUM_GREEN = Color.fromARGB(255, 0, 128, 0);
-  static Color LIGHT_GREEN = Color.fromARGB(255, 191, 255, 191);
-  static Color ORANGE_MEDIUM = Color.fromARGB(255, 247, 210, 184);
+  static Color ORANGE_MEDIUM = Color(int.parse("0xFFBA3D20"));
+  static Color ORANGE_LIGHT = Color(int.parse("0xFFD37B2B"));
   static Color DEEPRED = Color.fromARGB(255, 121, 23, 37);
   static Color LOGINREGISTERCOLOR = Color.fromARGB(255, 221, 235, 221);
+  static Color BROWN_GREEN = Color(int.parse("0xFF434310"));
 
   static const GEOMARKET_BLUE = Color(0xFF1E2E5D);
   static const firstColorContainer = Color.fromARGB(255, 143, 211, 145);

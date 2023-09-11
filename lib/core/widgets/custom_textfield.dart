@@ -9,7 +9,9 @@ Widget customTextField(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(), borderRadius: BorderRadius.circular(20)),
+            color: Color.fromARGB(255, 255, 255, 255),
+            border: Border.all(),
+            borderRadius: BorderRadius.circular(20)),
         child: TextField(
           controller: controller,
           keyboardType: inputType ?? TextInputType.emailAddress,
@@ -17,7 +19,6 @@ Widget customTextField(
             hintText: hintext,
             border: InputBorder.none,
             contentPadding: const EdgeInsets.all(8),
-            prefixIcon: Icon(Icons.abc),
           ),
           obscureText: isObsecure,
         ),

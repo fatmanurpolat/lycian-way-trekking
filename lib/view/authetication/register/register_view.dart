@@ -19,64 +19,77 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
       backgroundColor: CustomColors.LOGINREGISTERCOLOR,
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 120,
-            ),
-            Icon(
-              Icons.hiking,
-              size: 45,
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            //Hello Again!
-            Text(
-              "Hello There!",
-              style: GoogleFonts.bebasNeue(fontSize: 38),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Register below with your details!",
-              style: TextStyle(
-                fontSize: 20,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 58.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.hiking,
+                size: 45,
               ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            customTextField(
-              hintext: 'Username',
-              isObsecure: false,
-              controller: viewModel.userNameTextController,
-            ),
-            customTextField(
-                hintext: 'Password',
-                isObsecure: true,
-                inputType: TextInputType.number,
-                controller: viewModel.passwordTextController),
-            customTextField(
-              hintext: 'Confirm Password',
-              isObsecure: false,
-              controller: viewModel.confirmTextController,
-            ),
-            customElevatedButton(
-              buttonText: 'register',
-              onPressed: () {
-                viewModel.signUp(context);
-              },
-              buttonColor: CustomColors.ORANGE_BUTTON,
-            ),
-            TextButton(
+              SizedBox(
+                height: 30,
+              ),
+              //Hello Again!
+              Text(
+                "Hello There!",
+                style: GoogleFonts.bebasNeue(fontSize: 30),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                "Register below with your details!",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              customTextField(
+                hintext: 'Name',
+                isObsecure: false,
+                controller: viewModel.nameTextController,
+              ),
+              customTextField(
+                hintext: 'Surname',
+                isObsecure: false,
+                controller: viewModel.surnameTextController,
+              ),
+              customTextField(
+                hintext: 'Email',
+                isObsecure: false,
+                controller: viewModel.emailTextController,
+              ),
+              customTextField(
+                  hintext: 'Password',
+                  isObsecure: true,
+                  inputType: TextInputType.number,
+                  controller: viewModel.passwordTextController),
+              customTextField(
+                hintext: 'Confirm Password',
+                isObsecure: false,
+                controller: viewModel.confirmTextController,
+              ),
+              customElevatedButton(
+                buttonText: 'Register',
                 onPressed: () {
-                  Navigator.pop(context);
+                  viewModel.signUp(context);
                 },
-                child: Text('Do you already have an account?'))
-          ],
+                buttonColor: CustomColors.ORANGE_BUTTON,
+              ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Do you already have an account?',
+                    style: TextStyle(color: CustomColors.DARK_GREEN),
+                  ))
+            ],
+          ),
         ),
       ),
     );

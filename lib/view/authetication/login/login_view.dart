@@ -60,17 +60,17 @@ class _LoginViewState extends State<LoginView> {
                   height: 20,
                 ),
                 customTextField(
-                  hintext: 'Kullanıcı Adı',
+                  hintext: 'Username',
                   isObsecure: false,
-                  controller: viewModel.userNameTextController,
+                  controller: viewModel.emailTextController,
                 ),
                 customTextField(
-                    hintext: 'şifre',
+                    hintext: 'Password',
                     isObsecure: true,
                     inputType: TextInputType.number,
                     controller: viewModel.passwordTextController),
                 customElevatedButton(
-                  buttonText: 'login',
+                  buttonText: 'Login',
                   onPressed: () {
                     viewModel.login(context);
                   },
@@ -83,7 +83,10 @@ class _LoginViewState extends State<LoginView> {
                           MaterialPageRoute(
                               builder: (context) => RegisterView()));
                     },
-                    child: Text("Don't have an account?"))
+                    child: Text(
+                      "Don't have an account?",
+                      style: TextStyle(color: CustomColors.DARK_GREEN),
+                    ))
               ],
             ),
           ),

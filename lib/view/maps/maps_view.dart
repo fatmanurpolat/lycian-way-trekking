@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,12 +23,116 @@ class _MapsViewState extends ConsumerState<MapsView> {
   LatLng? userLocation;
   bool isLoading = true;
   final MapsViewModel viewModel = MapsViewModel();
+  final MapController mapController = MapController();
+  Stream<Position>? positionStream;
+  final List<Polyline> routePolylines = [];
+  List<LatLng> coordinates = [];
+  //harita kontrolcüsü
+
+  final List<Marker> markers = [];
 
   @override
   void initState() {
     super.initState();
-    // İzin kontrolü yapılıyor
     checkLocationPermission();
+    loadMarkersFromFirestore();
+    loadDataFromFirestore();
+    // startLocationTracking();
+  }
+
+  final LocationSettings locationSettings = const LocationSettings(
+    accuracy: LocationAccuracy.high,
+    distanceFilter: 0,
+  );
+  // void startLocationTracking() {
+  //   positionStream = Geolocator.getPositionStream(
+  //     locationSettings: locationSettings,
+  //   );
+  //   positionStream!.listen((Position position) {
+  //     setState(() {
+  //       userLocation = LatLng(position.latitude, position.longitude);
+  //     });
+  //   });
+  // }
+
+  Future<void> loadMarkersFromFirestore() async {
+    final QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('allRoutes').get();
+
+    for (final DocumentSnapshot doc in snapshot.docs) {
+      final GeoPoint? point = doc['point'] as GeoPoint?;
+
+      if (point != null) {
+        final double latitude = point.latitude;
+        final double longitude = point.longitude;
+
+        final Marker marker = Marker(
+          width: 10.0,
+          height: 10.0,
+          point: LatLng(latitude, longitude),
+          builder: (ctx) => const Icon(
+            Icons.location_on,
+            color: Colors.blue,
+          ),
+        );
+
+        setState(() {
+          markers.add(marker); // Her bir nokta için bir Marker ekleyin
+        });
+      }
+    }
+
+    if (userLocation != null) {
+      mapController.move(userLocation!, 15.0);
+    }
+  }
+
+  void loadDataFromFirestore() async {
+    // Firestore'dan "allRoutes" koleksiyonunu alın
+    QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('allRoutes').get();
+
+    // Belgeden "point" alanlarını çekip coordinates listesine ekleyin
+    snapshot.docs.forEach((doc) {
+      GeoPoint point = doc['point'];
+      coordinates.add(LatLng(point.latitude, point.longitude));
+    });
+
+    // State'i güncelleyin
+    setState(() {});
+  }
+
+  Future<void> loadRoutesFromFirestore() async {
+    final QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('allRoutes').get();
+
+    snapshot.docs.forEach((doc) {
+      GeoPoint point = doc['point'];
+      coordinates.add(LatLng(point.latitude, point.longitude));
+    });
+
+    for (final DocumentSnapshot doc in snapshot.docs) {
+      final String name = doc['name'] as String;
+      final List<GeoPoint> points = (doc['points'] as List)
+          .map((point) => GeoPoint(point['latitude'], point['longitude']))
+          .toList();
+
+      final List<LatLng> latLngPoints = points
+          .map((geoPoint) => LatLng(geoPoint.latitude, geoPoint.longitude))
+          .toList();
+
+      final Polyline routePolyline = Polyline(
+        points: latLngPoints,
+        color: Colors.blue, // Çizgi rengi
+        strokeWidth: 4.0, // Çizgi kalınlığı
+        // İhtiyacınıza göre çizgiyi özelleştirin
+      );
+
+      setState(() {
+        routePolylines.add(routePolyline);
+        mapController.move(userLocation!, 15.0);
+      });
+    }
   }
 
   // İzin kontrolü ve konum alımı
@@ -95,6 +200,25 @@ class _MapsViewState extends ConsumerState<MapsView> {
                               'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                           userAgentPackageName: 'com.example.app',
                         ),
+                        PolylineLayer(
+                          polylines: [
+                            Polyline(
+                              points: coordinates,
+                              color: Color.fromARGB(255, 240, 139, 15),
+                              strokeWidth: 2.0, // Çizgi kalınlı
+                            ),
+                          ],
+                        ),
+                        MarkerLayer(markers: [
+                          ...markers,
+                          Marker(
+                            point: userLocation!,
+                            builder: (ctx) => const Icon(
+                              Icons.location_on,
+                              color: Color.fromARGB(255, 254, 2, 2),
+                            ),
+                          ),
+                        ]),
                       ],
                     )
                   : Text('Konum bilgisi alınamadı.'),

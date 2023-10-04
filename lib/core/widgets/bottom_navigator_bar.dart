@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:restart_project/core/utils/app_config.dart';
 import 'package:restart_project/view/dashboard/dashboard_selection_route.dart';
 import 'package:restart_project/view/dashboard/dashboard_view.dart';
-import 'package:restart_project/view/dashboard/dashboard_view_detail_route.dart';
 import 'package:restart_project/view/maps/maps_view.dart';
 import 'package:restart_project/view/profile/profile_view.dart';
-import 'package:restart_project/view/route/routes_selection_view.dart.dart';
-import 'package:restart_project/view/route/routes_view.dart';
 
 class BottomNavigationWidget extends StatelessWidget {
   const BottomNavigationWidget({super.key});
@@ -47,30 +44,38 @@ class _BottomNavigationBarExampleState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: CustomAppBar(),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            backgroundColor: CustomColors.DARK_GREEN,
-            icon: const Icon(Icons.home),
+            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+            icon: Icon(
+              Icons.home,
+              color: CustomColors.DARK_GREEN,
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            backgroundColor: CustomColors.DARK_GREEN,
-            icon: const Icon(Icons.route),
+            icon: Icon(
+              Icons.route,
+              color: CustomColors.DARK_GREEN,
+            ),
             label: 'Route',
           ),
           BottomNavigationBarItem(
-            backgroundColor: CustomColors.DARK_GREEN,
-            icon: const Icon(Icons.map),
+            icon: Icon(
+              Icons.map,
+              color: CustomColors.DARK_GREEN,
+            ),
             label: 'Map',
           ),
           BottomNavigationBarItem(
-            backgroundColor: CustomColors.DARK_GREEN,
-            icon: const Icon(Icons.person),
+            icon: Icon(
+              Icons.person,
+              color: CustomColors.DARK_GREEN,
+            ),
             label: 'Profile',
           ),
         ],

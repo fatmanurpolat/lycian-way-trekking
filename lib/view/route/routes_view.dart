@@ -47,7 +47,7 @@ class _RoutesViewState extends State<RoutesView> {
                     duration: Duration(milliseconds: 300), // Animation duration
                     height: cardHeights[index], // Use the updated height
                     child: Card(
-                      color: CustomColors.ORANGE_LIGHT,
+                      color: CustomColors.BLUE_GRADIANT_END,
                       child: ListTile(
                         title: Text(routeName),
                         // Diğer rota verilerini burada gösterin

@@ -8,9 +8,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DashboardMainView(),
-      bottomNavigationBar: BottomNavigationWidget(),
+    return SafeArea(
+      child: Scaffold(
+        body: DashboardMainView(),
+        bottomNavigationBar: BottomNavigationWidget(),
+      ),
     );
   }
 }

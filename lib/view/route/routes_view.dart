@@ -63,26 +63,3 @@ class _RoutesViewState extends State<RoutesView> {
     );
   }
 }
-// import 'package:flutter/material.dart';
-// import 'package:restart_project/view/route/routes_selection_view.dart.dart';
-
-// class RoutesView extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Rota Seç'),
-//       ),
-//       body: Center(
-//         child: ElevatedButton(
-//           onPressed: () {
-//             Navigator.of(context).push(MaterialPageRoute(
-//               builder: (_) => RouteSelectionView(),
-//             ));
-//           },
-//           child: Text('Rota Seç'),
-//         ),
-//       ),
-//     );
-//   }
-// }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restart_project/core/utils/app_config.dart';
 import 'package:restart_project/view/dashboard/dashboard_selection_route.dart';
 
 class DashboardMainView extends StatelessWidget {
@@ -14,7 +15,7 @@ class DashboardMainView extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: const Icon(
-              Icons.hiking_rounded,
+              Icons.menu,
               color: Color.fromARGB(255, 41, 112, 9),
             ),
             tooltip: 'Open shopping cart',
@@ -25,16 +26,6 @@ class DashboardMainView extends StatelessWidget {
         ],
       ),
       body: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage("assets/images/detail_photo.webp"),
-        //     fit: BoxFit.cover,
-        //     colorFilter: ColorFilter.mode(
-        //       Colors.black.withOpacity(0.5), // Yarı opaklık için renk ayarı
-        //       BlendMode.dstATop,
-        //     ),
-        //   ),
-        // ),
         child: Center(
             child: Column(
           children: [
@@ -43,12 +34,11 @@ class DashboardMainView extends StatelessWidget {
             ),
             Container(
               decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: Colors.black)),
                 image: DecorationImage(
-                  image: AssetImage("assets/images/detail_photo.webp"),
+                  image: AssetImage("assets/images/hiking_view.png"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                    Colors.black
+                    Colors.green
                         .withOpacity(0.5), // Yarı opaklık için renk ayarı
                     BlendMode.dstATop,
                   ),
@@ -60,19 +50,17 @@ class DashboardMainView extends StatelessWidget {
                 child: Text(
                   "Macera Dolu Likya Yolu Yürüyüşünüzde Bol Eğlence, Huzur ve Güzellik Diliyoruz!",
                   style: TextStyle(
-                      fontSize: 23,
-                      wordSpacing: 4,
-                      fontFamily: 'Times New Roman',
-                      fontWeight: FontWeight.w500),
+                    fontSize: 20,
+                    wordSpacing: 4,
+                    fontFamily: 'YoungSerif',
+                    fontWeight: FontWeight.w500,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
             ),
             SizedBox(
-              height: 40,
-            ),
-            SizedBox(
-              height: 40,
+              height: 80,
             ),
             Row(
               children: [
@@ -105,7 +93,7 @@ class DashboardMainView extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
-                          image: AssetImage("assets/images/wheater.png"),
+                          image: AssetImage("assets/images/degre.png"),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -114,19 +102,20 @@ class DashboardMainView extends StatelessWidget {
                 ),
               ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => DashboardSelectionView(),
-                ));
-              },
-              child: Text('Rota Seç'),
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  const Color.fromARGB(255, 40, 112, 44)!, // Orman yeşili renk
-                ),
-              ),
+            SizedBox(
+              height: 30,
             ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => DashboardSelectionView(),
+                  ));
+                },
+                child: Text('Rota Seç'),
+                style: ElevatedButton.styleFrom(
+                  primary: CustomColors.DARK_GREEN,
+                  minimumSize: Size(200, 50),
+                )),
           ],
         )),
       ),

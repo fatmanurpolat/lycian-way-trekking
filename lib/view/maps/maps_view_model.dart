@@ -1,4 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:latlong2/latlong.dart';
 
 class MapsViewModel {
   Future<Position?> getLocationPermission() async {
@@ -12,27 +16,42 @@ class MapsViewModel {
         permission == LocationPermission.always) {
       return Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy
-              .best); //daha doğru sonuç verir ama pil kullanımını arttırır
+              .best); // Provides more accurate results but uses more battery
     } else {
-      return null; // İzin verilmedi veya reddedildi.
+      return null; // Permission not granted or denied.
     }
   }
 
-  Future<Position?> getUserLocation() async {
-    LocationPermission permission = await Geolocator.checkPermission();
+  Future<List<LatLng>> getCoordinates() async {
+    final QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('allRoutes').get();
 
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    }
+    final List<LatLng> coordinates = snapshot.docs.map((doc) {
+      final GeoPoint point = doc['startpoint'];
+      return LatLng(point.latitude, point.longitude);
+    }).toList();
 
-    if (permission == LocationPermission.whileInUse ||
-        permission == LocationPermission.always) {
-      final Position? position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.best,
+    return coordinates;
+  }
+
+  Future<List<Marker>> getMarkers() async {
+    final QuerySnapshot snapshot =
+        await FirebaseFirestore.instance.collection('allRoutes').get();
+
+    final List<Marker> markers = snapshot.docs.map((doc) {
+      final GeoPoint point = doc['startpoint'];
+      return Marker(
+        width: 10.0,
+        height: 10.0,
+        point: LatLng(point.latitude, point.longitude),
+        builder: (ctx) => const Icon(
+          Icons.location_on_rounded,
+          size: 20,
+          color: Colors.blue,
+        ),
       );
-      return position;
-    } else {
-      return null; // İzin verilmedi veya reddedildi.
-    }
+    }).toList();
+
+    return markers;
   }
 }

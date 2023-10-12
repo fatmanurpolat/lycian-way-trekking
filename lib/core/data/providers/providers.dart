@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:restart_project/core/utils/dark_mod/dark_mod_view_model.dart';
 import 'package:restart_project/view/detail_maps/detail_map_model.dart';
+import 'package:restart_project/view/detail_maps/detail_map_view_model.dart';
 
 final locationProvider =
     StateNotifierProvider<LocationNotifier, Location>((ref) {
@@ -11,11 +14,14 @@ final locationProvider =
     ),
   );
 });
+DarkThemeProvider themeChangeProvider = new DarkThemeProvider();
 
-class LocationNotifier extends StateNotifier<Location> {
-  LocationNotifier(Location state) : super(state);
+@override
+void initState() {
+  getCurrentAppTheme();
+}
 
-  void updateLocation(Location newLocation) {
-    state = newLocation;
-  }
+void getCurrentAppTheme() async {
+  themeChangeProvider.darkTheme =
+      await themeChangeProvider.darkThemePreference.getTheme();
 }

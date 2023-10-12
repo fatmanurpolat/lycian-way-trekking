@@ -80,7 +80,7 @@ class MapsView extends ConsumerWidget {
                                 point: LatLng(
                                     position.latitude, position.longitude),
                                 builder: (ctx) => Icon(
-                                  Icons.location_on,
+                                  Icons.my_location_rounded,
                                   size: 25,
                                   color: Color.fromARGB(255, 254, 2, 2),
                                 ),

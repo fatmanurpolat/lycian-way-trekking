@@ -90,6 +90,9 @@ class DashboardSelectionView extends StatelessWidget {
                               ),
                             ),
                           ),
+                          Container(
+                            child: Icon(Icons.star),
+                          )
                         ],
                       ),
                     ),

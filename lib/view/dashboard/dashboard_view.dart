@@ -14,7 +14,7 @@ class DashboardMainView extends StatelessWidget {
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               Icons.menu,
               color: Color.fromARGB(255, 41, 112, 9),
             ),

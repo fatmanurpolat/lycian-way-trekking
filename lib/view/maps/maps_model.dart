@@ -45,7 +45,7 @@ class MapsModel {
         height: 10.0,
         point: LatLng(point.latitude, point.longitude),
         builder: (ctx) => const Icon(
-          Icons.location_on_rounded,
+          Icons.my_location,
           size: 20,
           color: Colors.blue,
         ),

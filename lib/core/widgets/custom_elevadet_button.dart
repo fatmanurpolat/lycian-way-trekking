@@ -8,7 +8,7 @@ Widget customElevatedButton(
     ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: buttonColor ?? CustomColors.ORANGE_BUTTON,
+        backgroundColor: buttonColor ?? CustomColors.DEEPRED,
         padding: const EdgeInsets.symmetric(
           horizontal: 100,
           vertical: 10,

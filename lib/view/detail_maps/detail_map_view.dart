@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:restart_project/core/utils/app_config.dart';
 
 class DetailMapView extends StatefulWidget {
   final LatLng startpoint;
   final LatLng endpoint;
+  final String roadName;
 
-  DetailMapView({required this.startpoint, required this.endpoint});
+  DetailMapView(
+      {required this.startpoint,
+      required this.endpoint,
+      required this.roadName});
 
   @override
   _DetailMapViewState createState() => _DetailMapViewState();
@@ -17,7 +22,8 @@ class _DetailMapViewState extends State<DetailMapView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detay Harita Görünümü'),
+        title: Text('Map of ${widget.roadName}'),
+        backgroundColor: CustomColors.DARK_GREEN,
       ),
       body: FlutterMap(
         options: MapOptions(

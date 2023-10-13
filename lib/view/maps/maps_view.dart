@@ -24,6 +24,8 @@ final markersProvider = FutureProvider<List<Marker>>((ref) async {
 });
 
 class MapsView extends ConsumerWidget {
+  const MapsView({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userLocation = ref.watch(userLocationProvider);
@@ -68,7 +70,7 @@ class MapsView extends ConsumerWidget {
                             polylines: [
                               Polyline(
                                 points: coords,
-                                color: Color.fromARGB(255, 59, 0, 254),
+                                color: const Color.fromARGB(255, 59, 0, 254),
                                 strokeWidth: 4.0,
                               ),
                             ],
@@ -79,7 +81,7 @@ class MapsView extends ConsumerWidget {
                               Marker(
                                 point: LatLng(
                                     position.latitude, position.longitude),
-                                builder: (ctx) => Icon(
+                                builder: (ctx) => const Icon(
                                   Icons.my_location_rounded,
                                   size: 25,
                                   color: Color.fromARGB(255, 254, 2, 2),
@@ -90,15 +92,15 @@ class MapsView extends ConsumerWidget {
                         ],
                       );
                     },
-                    loading: () => CircularProgressIndicator(),
+                    loading: () => const CircularProgressIndicator(),
                     error: (error, _) => Text('Error: $error'),
                   );
                 },
-                loading: () => CircularProgressIndicator(),
+                loading: () => const CircularProgressIndicator(),
                 error: (error, _) => Text('Error: $error'),
               );
             },
-            loading: () => CircularProgressIndicator(),
+            loading: () => const CircularProgressIndicator(),
             error: (error, _) => Text('Error: $error'),
           ),
         ),

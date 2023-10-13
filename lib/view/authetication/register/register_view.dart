@@ -24,11 +24,11 @@ class _RegisterViewState extends State<RegisterView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.hiking,
                 size: 45,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               //Hello Again!

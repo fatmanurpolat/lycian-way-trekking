@@ -12,7 +12,7 @@ class LoginViewModel {
     if (user != null) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (ctx) => HomeView()),
+        MaterialPageRoute(builder: (ctx) => const HomeView()),
       );
     }
   }
@@ -32,24 +32,26 @@ class LoginViewModel {
 
       if (user != null) {
         // Giriş başarılı, ana sayfaya yönlendirin
+        // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (ctx) => HomeView()),
+          MaterialPageRoute(builder: (ctx) => const HomeView()),
         );
       } else {
         // Kullanıcı bilgileri hatalı
+        // ignore: use_build_context_synchronously
         showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Hata'),
-              content: Text('Kullanıcı adı veya şifre hatalı.'),
+              title: const Text('Hata'),
+              content: const Text('Kullanıcı adı veya şifre hatalı.'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Kapat'),
+                  child: const Text('Kapat'),
                 ),
               ],
             );
@@ -58,18 +60,19 @@ class LoginViewModel {
       }
     } catch (e) {
       // Giriş sırasında bir hata oluştu
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Hata'),
+            title: const Text('Hata'),
             content: Text('Giriş sırasında bir hata oluştu: $e'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Kapat'),
+                child: const Text('Kapat'),
               ),
             ],
           );
@@ -82,7 +85,7 @@ class LoginViewModel {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => RegisterView(),
+        builder: (context) => const RegisterView(),
       ),
     );
   }

@@ -6,8 +6,8 @@ final locationProvider =
     StateNotifierProvider<LocationNotifier, Location>((ref) {
   return LocationNotifier(
     Location(
-      startpoint: LatLng(38.23456, 39.12345),
-      endpoint: LatLng(38.34568, 39.47856),
+      startpoint: const LatLng(38.23456, 39.12345),
+      endpoint: const LatLng(38.34568, 39.47856),
     ),
   );
 });

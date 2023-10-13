@@ -11,17 +11,16 @@ class RegisterViewModel {
   TextEditingController surnameTextController = TextEditingController();
 
   Future<void> signUp(BuildContext context) async {
-    // Kullanıcı adı, şifre ve şifre onayı değerlerini alın
     String email = emailTextController.text.trim();
     String password = passwordTextController.text.trim();
     String confirmPassword = confirmTextController.text.trim();
     String name = nameTextController.text.trim();
     String surname = surnameTextController.text.trim();
 
-    // Şifreleri kontrol edin
+    // Şifre kontrol
     if (password == confirmPassword) {
       try {
-        // Firebase ile kullanıcı kaydı yapın
+        // Firebase ile kullanıcı kaydı
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
@@ -30,6 +29,7 @@ class RegisterViewModel {
         // Firestore'a kullanıcı bilgilerini kaydetme
         final user = FirebaseAuth.instance.currentUser;
         if (user != null) {
+          // ignore: deprecated_member_use
           await user.updateProfile(displayName: '$name $surname');
           // await FirebaseFirestore.instance
           //     .collection('user') // Firestore koleksiyon adını buraya ekle
@@ -44,6 +44,7 @@ class RegisterViewModel {
           //             merge: true)); // SetOptions ile belgeyi güncellemeyi seç
 
           // Kullanıcı başarıyla kaydedildiyse, ana sayfaya yönlendir
+          // ignore: use_build_context_synchronously
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => HomeView(),
@@ -64,7 +65,7 @@ class RegisterViewModel {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('Kapat'),
+                  child: const Text('Kapat'),
                 ),
               ],
             );
@@ -73,9 +74,13 @@ class RegisterViewModel {
       }
     } else {
       // Şifreler uyuşmuyorsa kullanıcıya bilgi ver
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Şifreler uyuşmuyor!"),
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            "Şifreler uyuşmuyor!",
+          ),
+        ),
+      );
     }
   }
 }

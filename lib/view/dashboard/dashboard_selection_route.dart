@@ -6,6 +6,8 @@ import 'package:restart_project/view/dashboard/dashboard_view_detail_route.dart'
 class DashboardSelectionView extends StatelessWidget {
   final FirestoreService viewModel = FirestoreService();
 
+  DashboardSelectionView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class DashboardSelectionView extends StatelessWidget {
         future: viewModel.getAllRoutes(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -30,7 +32,7 @@ class DashboardSelectionView extends StatelessWidget {
               child: Text('Veriler alınırken hata oluştu: ${snapshot.error}'),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text('Rota bulunamadı.'),
             );
           } else {
@@ -43,7 +45,7 @@ class DashboardSelectionView extends StatelessWidget {
 
                 return Container(
                   height: 260,
-                  margin: EdgeInsets.symmetric(
+                  margin: const EdgeInsets.symmetric(
                     vertical: 10.0,
                     horizontal: 20.0,
                   ), // Her buton arası boşluk
@@ -79,6 +81,7 @@ class DashboardSelectionView extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 routeName,
+                                // ignore: prefer_const_constructors
                                 style: TextStyle(
                                   fontFamily:
                                       'Times New Roman', // Yazı tipi: Times New Roman
@@ -90,9 +93,7 @@ class DashboardSelectionView extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Container(
-                            child: Icon(Icons.star),
-                          )
+                          const Icon(Icons.star)
                         ],
                       ),
                     ),

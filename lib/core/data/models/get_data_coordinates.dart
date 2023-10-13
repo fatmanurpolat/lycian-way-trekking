@@ -30,8 +30,8 @@ class LocationService {
     } else {
       // Belirtilen belge yoksa veya hata oluşursa varsayılan bir değer dönebilirsiniz.
       return Location(
-          startpoint: LatLng(38.14563, 39.85632),
-          endpoint: LatLng(38.45632, 39.45638));
+          startpoint: const LatLng(38.14563, 39.85632),
+          endpoint: const LatLng(38.45632, 39.45638));
     }
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:restart_project/core/utils/dark_mod/dark_mod_view_model.dart';
@@ -9,12 +8,12 @@ final locationProvider =
     StateNotifierProvider<LocationNotifier, Location>((ref) {
   return LocationNotifier(
     Location(
-      startpoint: LatLng(38.23456, 39.12345),
-      endpoint: LatLng(38.34568, 39.47856),
+      startpoint: const LatLng(38.23456, 39.12345),
+      endpoint: const LatLng(38.34568, 39.47856),
     ),
   );
 });
-DarkThemeProvider themeChangeProvider = new DarkThemeProvider();
+DarkThemeProvider themeChangeProvider = DarkThemeProvider();
 
 @override
 void initState() {

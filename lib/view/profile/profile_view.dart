@@ -10,6 +10,8 @@ import 'package:restart_project/core/utils/app_config.dart';
 import 'package:restart_project/view/profile/profile_view_model.dart';
 
 class ProfileView extends StatefulWidget {
+  const ProfileView({super.key});
+
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }
@@ -112,7 +114,7 @@ class _ProfileViewState extends State<ProfileView> {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(
+                image: const AssetImage(
                   "assets/images/profile_page_photo.avif",
                 ),
                 colorFilter: ColorFilter.mode(
@@ -150,25 +152,25 @@ class _ProfileViewState extends State<ProfileView> {
                             onPressed: () {
                               selectImage();
                             },
-                            icon: Icon(Icons.add_a_photo),
+                            icon: const Icon(Icons.add_a_photo),
                           ),
                         ),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: Center(
                       child: Text(
                         '${user?.displayName}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
                   Padding(
@@ -176,7 +178,7 @@ class _ProfileViewState extends State<ProfileView> {
                     child: Container(
                       width: MediaQuery.of(context).size.width *
                           0.5, // Sayfanın yarısı kadar genişlik
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -186,7 +188,7 @@ class _ProfileViewState extends State<ProfileView> {
                           viewModel.signOut(context);
                           // saveProfile();
                         },
-                        child: Text('Çıkış Yap'),
+                        child: const Text('Çıkış Yap'),
                       ),
                     ),
                   ),

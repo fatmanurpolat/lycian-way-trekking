@@ -9,7 +9,8 @@ import 'package:restart_project/view/detail_maps/detail_map_view.dart';
 class RouteDetailsView extends StatelessWidget {
   final Map<String, dynamic> routeData;
 
-  RouteDetailsView({required this.routeData});
+  // ignore: prefer_const_constructors_in_immutables
+  RouteDetailsView({super.key, required this.routeData});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class RouteDetailsView extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: Color.fromARGB(255, 138, 133, 133),
+          color: const Color.fromARGB(255, 138, 133, 133),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

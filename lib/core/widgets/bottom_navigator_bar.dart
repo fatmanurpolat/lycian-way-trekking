@@ -59,14 +59,14 @@ class _BottomNavigationBarExampleState
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.route,
+              Icons.map,
               color: CustomColors.DARK_GREEN,
             ),
             label: 'Route',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.map,
+              Icons.public,
               color: CustomColors.DARK_GREEN,
             ),
             label: 'Map',

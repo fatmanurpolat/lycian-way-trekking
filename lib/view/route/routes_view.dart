@@ -3,7 +3,10 @@ import 'package:restart_project/core/services/firestore_service.dart';
 import 'package:restart_project/core/utils/app_config.dart';
 
 class RoutesView extends StatefulWidget {
+  const RoutesView({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _RoutesViewState createState() => _RoutesViewState();
 }
 
@@ -20,11 +23,11 @@ class _RoutesViewState extends State<RoutesView> {
         future: viewModel.getAllRoutes(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text('Veriler alınırken hata oluştu: ${snapshot.error}');
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Text('Rota bulunamadı.');
+            return const Text('Rota bulunamadı.');
           } else {
             // Verileri göstermek için ListView.builder kullanın
             return ListView.builder(
@@ -44,7 +47,8 @@ class _RoutesViewState extends State<RoutesView> {
                     });
                   },
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 300), // Animation duration
+                    duration:
+                        const Duration(milliseconds: 300), // Animation duration
                     height: cardHeights[index], // Use the updated height
                     child: Card(
                       color: CustomColors.BLUE_GRADIANT_END,

@@ -8,12 +8,14 @@ class DetailMapView extends StatefulWidget {
   final LatLng endpoint;
   final String roadName;
 
-  DetailMapView(
-      {required this.startpoint,
+  const DetailMapView(
+      {super.key,
+      required this.startpoint,
       required this.endpoint,
       required this.roadName});
 
   @override
+  // ignore: library_private_types_in_public_api
   _DetailMapViewState createState() => _DetailMapViewState();
 }
 
@@ -33,7 +35,7 @@ class _DetailMapViewState extends State<DetailMapView> {
         children: [
           TileLayer(
             urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            subdomains: ['a', 'b', 'c'],
+            subdomains: const ['a', 'b', 'c'],
           ),
           PolylineLayer(
             polylines: [

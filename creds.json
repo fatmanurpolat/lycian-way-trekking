@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lycian-way-trekking",
+  "private_key_id": "4a25eefdfee93c33e93c4c1d074d0b04ea8e8b0c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDg4ea8OsiE1Kli\nIE4Q+zeZ2UsRUmQHvCvgJP7DlVNdtxP6ItZjcq2e1TG8EA/1Dojtn1SbFGLjzrub\nvMwhj9xqGPDwcXZNu2SiGNyB2HBRuCo5DvgNar4TOy45TkOYhE48h8fPi/UIqJZ6\nN2xAADgr36pallcnWLFpvyevkXOmvCqC5j9ziMn/BZadn/aLtPi2cHVrH7yZg4CT\nfNwemdmLcv0YpPjpp6zwfU/pXV5nKj3gXj+QTQc/5qE4MKCD5RBXom/tLLGmab7g\nnpOkrMGH7iBEYZgcPrXEfY3qhTJcv95K70coHc/hzJO3rBy50N/WbQMHG2qdAXpd\n/yjbpWJhAgMBAAECggEAZfCBM5pCA1STY9PZD4GRdsA1cyiyB3+ZNAYRJn+uRrES\n8TSRkosNgQ6LeQCe+ysXjv/GznWzTikMilBPCHe6Jq4fqh8Ezb/Aomo6qvF+GM0u\n9qZ+czaL6xPMpFWB9sUi4fV68e4zqTUi4Uv2Why/WcQN6Pp1j3R5F8J7Lu70SgPw\nfxLmEy0mMzYWqobG3NPXhbXVbpwe2YnRRAI3ypSOsluE9hP5dn/AqCOgDd3HOo5+\nVlqUs0oMx8qYwI817umTKKduhJaFgPLUYZ1O4iyxthWthGnpw1rJjTcQVxTXNzXy\nRzMw10V7QAsUovB4Xgl/+o66nIP/DsGC6jEsir128QKBgQD0m5bbn5nqMypGhBWd\nLLgDrNsZDprlbYWcjX0d0YDI3tH6r2ldgE7yDkXhBpGHiWbT6UBLrjwwFy/zXSkV\niOZT2syucFHeAAHKXxD+wfuZsFol3y7FMuAegFFeDnKtxe6ob4ezzYxFrBOFctE4\ndIAC8lBXQuJbHFcc264bhNG9qwKBgQDrWyFu392yZdOTYKvxuggNma+ZVTuMFZ2h\nLDHlsTFAUdGmm1erLUqa5cOvZhJ9sUig1RaedASAAYckVQyoQrqbp3NavGgHDDCN\nXxqogLNlp72V3b2uFoTX7geaJJ553m72HUMJzUuUta+AhAbhQBhRDO8pexePfwGO\nmGA6s21cIwKBgQCEyFFEN4dd0xiH3vu8rqHVnOfy2jLLiICXU1cv8KJwaESkSMRx\ntU0lqQnV9bLaWIQxVNVKP/L8SBoHifLbdc1Sh9vEdcR7NpXCPYkEQllKPKkzFcxV\n0CBJbm69GCq4mlHLrX+E43fZ+mc+ce2RL+ytrMxgEja+Lsw7JiWFWrxgsQKBgCsN\nHGx/nroHTlBjGpC5CsgSGMDfimjxe0gEIYx2gR/W15a2S68QNdlntgfbj/5V84cX\n829AoaIYpXPL6ujMa/4U/1DVreG8JRV3FBVGlYo+yLslOJEjpWEqNVHI6QQ53+o9\nKAoe93hYU6YagHerlccdqpHX5lNlVA+VZ+TU9WgpAoGAA4AJoEye/+UoR9PDBPBx\nrUeFeNDMLd2JlNqNVt89eFGi9VTQ5VPnGwYF+AzfHqfQB96bhbVkjB7uOWHPelft\nZ8JVsY8kiPRuXLwAEGp2T9zEdPVVnzFz3Y6YaytJqHC0sCA4cwx+Q68D64HmZq50\nMI7ulkyb+WROZuZG9VI8mDc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ln76x@lycian-way-trekking.iam.gserviceaccount.com",
+  "client_id": "106303548513261352578",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ln76x%40lycian-way-trekking.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

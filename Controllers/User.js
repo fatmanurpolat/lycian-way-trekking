@@ -1,5 +1,5 @@
 const User = require('../Models/User.js')
-const { Save, GetUsers } = require('../Repositories/UserRepository.js')
+const { Save, GetUsers, GetUserById } = require('../Repositories/UserRepository.js')
 
 
 
@@ -25,9 +25,21 @@ const getUsers = async(req,res,next) => {
     }
 }
 
+const getUserById = async(req,res,next) => {
+    try {
+        const userId = req.params.userId;
+        const user = await GetUserById(userId);
+        console.log(user);
+        res.status(200).json(user);
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 
 module.exports = {
     saveUser,
-    getUsers
+    getUsers,
+    getUserById
 }

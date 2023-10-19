@@ -1,4 +1,5 @@
-const db = require('../Helpers/firebase.js'); 
+const db = require('../Helpers/firebase.js');
+const admin = require('firebase-admin')
 const createError = require('http-errors')
 
 const usersCollection = db.collection('user')
@@ -35,9 +36,20 @@ const GetUsers = async() => {
     }
 }
 
+const GetUserById = async(id) => {
+    try {
+        const userRecord = await admin.auth().getUser(id);
+        const userData = userRecord.toJSON();
+        return userData;
+    } catch (error) {
+        console.log(error);
+        throw error
+    }
+}
 
 
 module.exports = {
     Save,
-    GetUsers
+    GetUsers,
+    GetUserById
 }
